@@ -2,6 +2,9 @@
 # pip install --upgrade streamlit
 # pip install --upgrade streamlit==1.11.1
 # pip install pydeck==0.7.1
+# pip install pipreqs 
+
+
 import streamlit as st
 import pandas as pd
 import numpy as np
