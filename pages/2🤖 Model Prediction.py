@@ -4,7 +4,7 @@ import pandas as pd
 
 @st.cache 
 def load_model():
-    with open('../deploymentWorkshopModel.pkl', 'rb') as model:
+    with open('deploymentWorkshopModel.pkl', 'rb') as model:
         model = pickle.load(model)
     return model
 

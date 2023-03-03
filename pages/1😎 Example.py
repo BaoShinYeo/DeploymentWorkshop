@@ -63,35 +63,35 @@ st.line_chart(chart_data)
 st.markdown("## 2D Map")
 st.map(map_df)
 
-st.markdown("## 3D Map")
-st.pydeck_chart(pdk.Deck(
-    map_style=None,
-    initial_view_state=pdk.ViewState(
-        latitude=1.3521,
-        longitude=103.8198,
-        zoom=11,
-        pitch=50,
-    ),
-    layers=[
-        pdk.Layer(
-           'HexagonLayer',
-           data=map_df,
-           get_position='[lon, lat]',
-           radius=200,
-           elevation_scale=4,
-           elevation_range=[0, 1000],
-           pickable=True,
-           extruded=True,
-        ),
-        pdk.Layer(
-            'ScatterplotLayer',
-            data=map_df,
-            get_position='[lon, lat]',
-            get_color='[200, 30, 0, 160]',
-            get_radius=200,
-        ),
-    ],
-))
+# st.markdown("## 3D Map")
+# st.pydeck_chart(pdk.Deck(
+#     map_style=None,
+#     initial_view_state=pdk.ViewState(
+#         latitude=1.3521,
+#         longitude=103.8198,
+#         zoom=11,
+#         pitch=50,
+#     ),
+#     layers=[
+#         pdk.Layer(
+#            'HexagonLayer',
+#            data=map_df,
+#            get_position='[lon, lat]',
+#            radius=200,
+#            elevation_scale=4,
+#            elevation_range=[0, 1000],
+#            pickable=True,
+#            extruded=True,
+#         ),
+#         pdk.Layer(
+#             'ScatterplotLayer',
+#             data=map_df,
+#             get_position='[lon, lat]',
+#             get_color='[200, 30, 0, 160]',
+#             get_radius=200,
+#         ),
+#     ],
+# ))
 
 st.markdown("## Graph")
 st.graphviz_chart('''
