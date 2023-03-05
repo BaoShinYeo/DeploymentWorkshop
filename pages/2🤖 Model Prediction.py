@@ -1,6 +1,7 @@
 import streamlit as st
 import pickle
 import pandas as pd
+import time
 
 @st.cache 
 def load_model():
@@ -8,11 +9,19 @@ def load_model():
         model = pickle.load(model)
     return model
 
-st.title("Iris Flower Prediction")
+def predict(features):
+    with prediction_placeholder:
+        with st.spinner("Please wait while our model is predicting..."):
+            prediction = model.predict(features)
+            flower = flowers[prediction[0]]
+            time.sleep(3)
+    st.session_state.prediction =  f"Your flower is most likely a **{flower}** flower."
 
-st.write("This application helps to predict the species of the Iris flower using a Logistic Regression model.")
+"""# Iris Flower Prediction
 
-st.write("Iris flower species are classified into three species: Setosa, Versicolor and Virginica.")
+This application helps to predict the species of the Iris flower using a Logistic Regression model.
+
+Iris flower species are classified into three species: Setosa, Versicolor and Virginica."""
 
 sepal_length = st.sidebar.slider("Sepal Length", min_value = 4.3, max_value = 7.9, value = 5.8, step = 0.1)
 sepal_width = st.sidebar.slider("Sepal Width", min_value = 2.0, max_value = 4.4, value = 3.0, step = 0.1)
@@ -27,6 +36,14 @@ st.dataframe(features)
 
 model = load_model()
 
-if st.checkbox("Predict"):
+prediction_placeholder = st.empty()
+
+prediction = st.button("Predict", on_click=predict, args=(features,))
+
+if prediction:
     st.balloons()
-    st.write(f"Your flower is most likely a **{flowers[model.predict(features)[0]]}** flower.")
+    st.write(st.session_state.prediction)
+
+# if st.checkbox("Predict"):
+#     st.balloons()
+#     st.write(f"Your flower is most likely a **{flowers[model.predict(features)[0]]}** flower.")
