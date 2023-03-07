@@ -13,8 +13,8 @@ def predict(features):
     with prediction_placeholder:
         with st.spinner("Please wait while our model is predicting..."):
             prediction = model.predict(features)
+            time.sleep(0.1)
             flower = flowers[prediction[0]]
-            time.sleep(3)
     st.session_state.prediction =  f"Your flower is most likely a **{flower}** flower."
 
 """# Iris Flower Prediction

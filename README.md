@@ -2,6 +2,8 @@
 
 In this repository we will be learning how to deploy a logistic regression model on the famous iris dataset using Streamlit - a powerful Python library for building web applications
 
+The model is deployed at https://baoshinyeo-deploymentworkshop-app-6glh6c.streamlit.app/
+
 ### For Streamlit Development and Deployment
 
 1. Install git and clone the repo `sudo yum install git` and `git clone <url>`
